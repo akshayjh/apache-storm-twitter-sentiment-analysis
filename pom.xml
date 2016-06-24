@@ -5,7 +5,7 @@
   <artifactId>apache-storm-twitter-sentiment-analysis</artifactId>
   <packaging>jar</packaging>
   <version>0.1</version>
-  <name>Apache Storm Twitter Sentiment Analysis Sample</name>
+  <name>Apache Storm Twitter Naive Sentiment Analysis</name>
   <url>http://alecspopa.com</url>
 
   <dependencies>

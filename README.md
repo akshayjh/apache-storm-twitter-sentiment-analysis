@@ -1,4 +1,4 @@
-Apache Storm Twitter Sentiment Analysis Sample
+Apache Storm Twitter Naive Sentiment Analysis
 ====
 
 Sample project based on https://github.com/davidkiss/storm-twitter-word-count demonstrating real-time computation of Apache Storm framework.

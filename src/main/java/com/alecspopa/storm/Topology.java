@@ -19,8 +19,11 @@ public class Topology {
 
 	public static void main(String[] args) {
 		Set<String> languages = new HashSet<String>(Arrays.asList(new String[] {"en"}));
-		Set<String> mentions = new HashSet<String>(Arrays.asList(new String[] {
+		Set<String> hashtags = new HashSet<String>(Arrays.asList(new String[] {
 				"brexit", "barackobama", "hillaryclinton", "donaldtrump"
+		}));
+		Set<String> mentions = new HashSet<String>(Arrays.asList(new String[] {
+				"barackobama", "hillaryclinton", "realdonaldtrump"
 		}));
 		
 		Config config = new Config();
@@ -28,7 +31,7 @@ public class Topology {
 
 		TopologyBuilder b = new TopologyBuilder();
 		b.setSpout("TwitterSampleSpout", new TwitterSampleSpout());
-        b.setBolt("MentionBolt", new MentionBolt(languages, mentions)).shuffleGrouping("TwitterSampleSpout");
+        b.setBolt("MentionBolt", new MentionBolt(languages, hashtags, mentions)).shuffleGrouping("TwitterSampleSpout");
         b.setBolt("TweetWordSplitterBolt", new TweetWordSplitterBolt(3)).shuffleGrouping("MentionBolt");
         b.setBolt("SentimentAnalysisBolt", new SentimentAnalysisBolt(10, 10 * 60)).shuffleGrouping("TweetWordSplitterBolt");
 

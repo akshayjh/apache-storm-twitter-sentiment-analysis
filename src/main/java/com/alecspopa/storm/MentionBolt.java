@@ -24,10 +24,12 @@ public class MentionBolt extends BaseRichBolt {
     private OutputCollector collector;
 
     private Set<String> languages;
+    private Set<String> hashtags;
     private Set<String> mentions;
     
-    public MentionBolt(Set<String> languages, Set<String> hashtags) {
+    public MentionBolt(Set<String> languages, Set<String> hashtags, Set<String> mentions) {
         this.languages = languages;
+        this.hashtags = hashtags;
         this.mentions = hashtags;
     }
     
@@ -62,7 +64,7 @@ public class MentionBolt extends BaseRichBolt {
         for (HashtagEntity hashtag : hashtags) {
         	String hashtagText = hashtag.getText().toLowerCase();
         	
-        	if (!this.mentions.contains(hashtagText)) {
+        	if (!this.hashtags.contains(hashtagText)) {
         		continue;
         	}
         	
